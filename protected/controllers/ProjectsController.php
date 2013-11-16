@@ -3,6 +3,9 @@
 class ProjectsController extends Controller
 {
 	public function actionIndex(){
-		$this->render('index');
+		$type = "new_appro";
+		$getBudget = Curl::dataBudget($type);
+		//$this->render('index');
+		Common::pre($getBudget);
 	}
 }
