@@ -77,10 +77,10 @@ class SiteController extends Controller
 	 */
 	public function actionRegister()
 	{
-		$model=new Admin('register');
+		$model=new Users('register');
 
-		if(isset($_POST['Admin']) && isset($_POST['btnRegister'])){
-			$model->attributes = $_POST['Admin'];
+		if(isset($_POST['Users']) && isset($_POST['btnRegister'])){
+			$model->attributes = $_POST['Users'];
 
 			if($model->validate() && $model->save()){
 				Yii::app()->user->setFlash('msg','Registered successfully');
@@ -100,13 +100,12 @@ class SiteController extends Controller
 	 */
 	public function actionLogin()
 	{
-		$model=new Admin('login');
-
+		$model=new Users('login');
 
 		// collect user input data
-		if(isset($_POST['Admin']))
+		if(isset($_POST['Users']))
 		{
-			$model->attributes=$_POST['Admin'];
+			$model->attributes=$_POST['Users'];
 			// validate user input and redirect to the previous page if valid
 			if($model->validate() && $model->login()){
 				$this->redirect('site/contact');

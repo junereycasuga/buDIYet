@@ -20,9 +20,9 @@ class UserIdentity extends CUserIdentity
 	public function authenticate()
 	{
 		if(strpos($this->username, '@') !== false){
-			$userRecord = Admin::model()->findByAttributes(array('email'=>$this->username));
+			$userRecord = Users::model()->findByAttributes(array('email'=>$this->username));
 		} else {
-			$userRecord = Admin::model()->findByAttributes(array('username'=>$this->username));
+			$userRecord = Users::model()->findByAttributes(array('username'=>$this->username));
 		}
 
 		if($userRecord===null){
@@ -35,8 +35,7 @@ class UserIdentity extends CUserIdentity
 			$this->setState('userId', $userRecord->id);
 			$this->setState('username', $userRecord->username);
 			$this->setState('userEmail', $userRecord->email);
-			$this->setState('userFirstname', $userRecord->first_name);
-			$this->setState('userLastname', $userRecord->last_name);
+			$this->setState('userFullname', $userRecord->full_name);
 
 			return $this->errorCode=self::ERROR_NONE;
 		}

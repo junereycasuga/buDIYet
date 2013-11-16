@@ -7,7 +7,7 @@
 // CWebApplication properties can be configured here.
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
-	'name'=>'WatchOut',
+	'name'=>'buDIYet',
 
 	// preloading 'log' component
 	'preload'=>array('log'),
@@ -54,13 +54,13 @@ return array(
 		// ),
 		// uncomment the following to use a MySQL database
 		
-		// 'db'=>array(
-		// 	'connectionString' => 'mysql:host=localhost;dbname=watchout',
-		// 	'emulatePrepare' => true,
-		// 	'username' => 'root',
-		// 	'password' => '',
-		// 	'charset' => 'utf8',
-		// ),
+		'db'=>array(
+			'connectionString' => 'mysql:host=localhost;dbname=budiyet',
+			'emulatePrepare' => true,
+			'username' => 'root',
+			'password' => '',
+			'charset' => 'utf8',
+		),
 		
 		'errorHandler'=>array(
 			// use 'site/error' action to display errors
