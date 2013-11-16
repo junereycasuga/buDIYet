@@ -87,7 +87,7 @@ class SiteController extends Controller
 				Yii::app()->user->setFlash('msgClass', 'alert alert-success');
 			} else {
 				Yii::app()->user->setFlash('msg','Registration unsuccessful');
-				Yii::app()->user->seFlash('msg','alert alert-error');
+				Yii::app()->user->setFlash('msg','alert alert-error');
 			}
 		}
 		$this->render('register', array(
