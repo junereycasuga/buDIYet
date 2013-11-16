@@ -128,4 +128,27 @@ class DiyBudgets extends CActiveRecord
 			throw new CHttpException(403);
 		}
 	}
+
+	public static function listAll(){
+		$model = Yii::app()->db->createCommand()
+				->select('t1.id, t1.user_id, t1.date_created, t1.likes, t1.dislikes,t1.comment, t2.full_name')
+				->from('diy_budgets t1')
+				->leftJoin("users t2", "t1.user_id = t2.id");
+
+		$countQuery = clone $model;
+		$countQuery->select('count(*) as count');
+		$count = $countQuery->queryScalar();
+		$pages = new CPagination($count);
+		$pages->pageSize = Yii::app()->params['pageSize']; // results per page
+		$pages->pageVar = "vote";
+		//$offset=$pages->getOffset();
+		//$limit=$pages->getLimit();
+		$model->limit($pages->getLimit(),$pages->getOffset());
+
+		$data = $model->queryAll();
+
+		$result = array('data'=>$data,'pages'=>$pages,"count"=>$count);
+
+		return $result;
+	}
 }
