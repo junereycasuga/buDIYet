@@ -93,4 +93,29 @@ class DiyBudgets extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
+
+	public function upVote($id)
+	{
+		$model = self::model()->findByPk($id);
+		
+		if($model){
+			$model->likes += 1;
+			$model->save();
+		} else {
+			throw new CHttpException(403);
+		}
+	}
+
+	public function downVote($id)
+	{
+		$model = self::model()->findByPk($id);
+
+		if($model){
+			$model->dislikes -= 1;
+			$model->save();
+		} else {
+			throw new CHttpException(403);
+		}
+
+	}
 }
