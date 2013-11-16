@@ -139,4 +139,14 @@ class DiyBreakdown extends CActiveRecord
 
 		return true;
 	}
+
+	public static function getDiyDetails($id)
+	{
+		$query = Yii::app()->db->createCommand()
+				->select('*')
+				->from('diy_breakdown')
+				->where('diy_id = :diyId', array(':diyId'=>$id));
+
+		Common::pre($query->queryAll());exit;
+	}
 }

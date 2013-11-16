@@ -94,17 +94,12 @@ class DiyBudgets extends CActiveRecord
 	}
 
 	public static function saveDIY($userId,$new=NULL,$auto=NULL){
-		//Common::pre($userId);exit;
 		$model = new DiyBudgets;
 		$model->user_id = $userId;
 		$model->likes = 0;
 		$model->dislikes = 0;
 		$model->save(false);
 		DiyBreakdown::saveBreakDown($model->id,$new,$auto);
-		
-
-
-
 	}
 
 	public function upVote($id)
@@ -129,6 +124,5 @@ class DiyBudgets extends CActiveRecord
 		} else {
 			throw new CHttpException(403);
 		}
-
 	}
 }
