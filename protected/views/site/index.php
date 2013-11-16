@@ -12,21 +12,9 @@ $this->pageTitle=Yii::app()->name;
 	</div>
 	<div class="row">
 		<div class="col-md-6">
-			<div>
-				<br>
-				<br>
-				<br>
-				<br>
-				<br>
-				<br>
-				<br>
-				<br>
-				<br>
-				<br>
-			</div>
 		</div>
 		<div class="col-md-6">
-			<div class="well">
+			<div class="widget-container fluid-height clearfix">
 				<p>
 					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu sollicitudin nunc. Aliquam mauris mi, vulputate vitae elementum quis, varius et mauris. Ut erat lacus, pretium vel diam iaculis, imperdiet congue mi. Aenean vel est lacus. Morbi fermentum dapibus velit. Praesent in dui lobortis, tincidunt enim id, pellentesque augue. Curabitur in nunc luctus, scelerisque diam non, lobortis nunc. Aenean eleifend, risus non lacinia interdum, nunc ipsum varius velit, eget varius mauris magna id augue.
 				</p>
