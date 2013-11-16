@@ -32,9 +32,10 @@ class UserController extends Controller
 
     public function actiondashboard()
     {
-    	$myBudget = DiyBudgets::getCustomUserBudget(Yii::app()->user->userId);
+    	$myBudget = DiyBudgets::listAllUserBudget(Yii::app()->user->userId);
         $this->render('dashboard', array(
-        	'myBudget'=>$myBudget
+        	'myBudget'=>$myBudget,
+        	'pages'=>$myBudget['pages'],
         	)
         );
     }

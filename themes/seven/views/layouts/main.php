@@ -36,6 +36,22 @@
 		<div class="container">
 			<?php echo $content; ?>
 		</div>
+			<!-- <div class="row footer">
+				<div class="col-md-4">
+					Bla
+				</div>
+				<div class="col-md-4">
+					Bla
+				</div>
+				<div class="col-md-4">
+					<img src="<?php echo Yii::app()->request->baseUrl.'/images/dbm.png'; ?>" width="100" alt="" />
+					<img src="<?php echo Yii::app()->request->baseUrl.'/images/dbm.png'; ?>" width="100" alt="" />
+					<img src="<?php echo Yii::app()->request->baseUrl.'/images/dbm.png'; ?>" width="100" alt="" />
+				</div>
+				<div class="text-center">
+					<a rel="license" href="http://creativecommons.org/licenses/by/3.0/deed.en_US"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by/3.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/3.0/deed.en_US">Creative Commons Attribution 3.0 Unported License</a>.
+				</div>
+			</div> -->
 	</body>
 	<?php Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl.'/library/javascripts/jquery-1.10.1.min.js');?>
 	<?php Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl.'/library/javascripts/bootstrap.min.js');?>

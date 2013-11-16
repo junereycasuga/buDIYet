@@ -10,7 +10,7 @@
 	                			<blockquote><?php echo $value['comment']; ?></blockquote>
 	                		</div>
 	                		<div class="pull-right">
-	                			<span><i class="icon-thumbs-up"></i><span class="label label-danger"><?php echo $value['likes']; ?></span></span>&nbsp;&nbsp;&nbsp;
+	                			<span><i class="icon-thumbs-up"></i><span class="label label-primary"><?php echo $value['likes']; ?></span></span>&nbsp;&nbsp;&nbsp;
 	                			<span><i class="icon-thumbs-down"></i><span class="label label-danger"><?php echo $value['dislikes']; ?></span></span>
 	                		</div>
 	                	</div><br>

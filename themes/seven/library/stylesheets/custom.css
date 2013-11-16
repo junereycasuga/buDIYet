@@ -1,3 +1,9 @@
 .panels {
 	font-size: 1em;
 }
+
+.footer {
+	border-top: 1px solid #999;
+	margin-top: 20px;
+	padding: 10px;
+}
