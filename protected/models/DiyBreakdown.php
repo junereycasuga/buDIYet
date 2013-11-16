@@ -6,21 +6,12 @@
  * The followings are the available columns in table 'diy_breakdown':
  * @property integer $diy_id
  * @property string $department
+ * @property string $owner
  * @property string $project_name
  * @property double $budget_amt
  */
 class DiyBreakdown extends CActiveRecord
 {
-	/**
-	 * Returns the static model of the specified AR class.
-	 * @param string $className active record class name.
-	 * @return DiyBreakdown the static model class
-	 */
-	public static function model($className=__CLASS__)
-	{
-		return parent::model($className);
-	}
-
 	/**
 	 * @return string the associated database table name
 	 */
@@ -37,13 +28,14 @@ class DiyBreakdown extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('diy_id, department, project_name, budget_amt', 'required'),
+			array('diy_id, department, owner, project_name, budget_amt', 'required'),
 			array('diy_id', 'numerical', 'integerOnly'=>true),
 			array('budget_amt', 'numerical'),
-			array('department, project_name', 'length', 'max'=>150),
+			array('department', 'length', 'max'=>150),
+			array('owner', 'length', 'max'=>50),
 			// The following rule is used by search().
-			// Please remove those attributes that should not be searched.
-			array('diy_id, department, project_name, budget_amt', 'safe', 'on'=>'search'),
+			// @todo Please remove those attributes that should not be searched.
+			array('diy_id, department, owner, project_name, budget_amt', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -66,6 +58,7 @@ class DiyBreakdown extends CActiveRecord
 		return array(
 			'diy_id' => 'Diy',
 			'department' => 'Department',
+			'owner' => 'Owner',
 			'project_name' => 'Project Name',
 			'budget_amt' => 'Budget Amt',
 		);
@@ -73,22 +66,45 @@ class DiyBreakdown extends CActiveRecord
 
 	/**
 	 * Retrieves a list of models based on the current search/filter conditions.
-	 * @return CActiveDataProvider the data provider that can return the models based on the search/filter conditions.
+	 *
+	 * Typical usecase:
+	 * - Initialize the model fields with values from filter form.
+	 * - Execute this method to get CActiveDataProvider instance which will filter
+	 * models according to data in model fields.
+	 * - Pass data provider to CGridView, CListView or any similar widget.
+	 *
+	 * @return CActiveDataProvider the data provider that can return the models
+	 * based on the search/filter conditions.
 	 */
 	public function search()
 	{
-		// Warning: Please modify the following code to remove attributes that
-		// should not be searched.
+		// @todo Please modify the following code to remove attributes that should not be searched.
 
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('diy_id',$this->diy_id);
 		$criteria->compare('department',$this->department,true);
+		$criteria->compare('owner',$this->owner,true);
 		$criteria->compare('project_name',$this->project_name,true);
 		$criteria->compare('budget_amt',$this->budget_amt);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
+	}
+
+	/**
+	 * Returns the static model of the specified AR class.
+	 * Please note that you should have this exact method in all your CActiveRecord descendants!
+	 * @param string $className active record class name.
+	 * @return DiyBreakdown the static model class
+	 */
+	public static function model($className=__CLASS__)
+	{
+		return parent::model($className);
+	}
+
+	public static function saveBreakDown($diyId,$new,$auto){
+		
 	}
 }
