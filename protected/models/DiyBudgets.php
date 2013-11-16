@@ -125,4 +125,15 @@ class DiyBudgets extends CActiveRecord
 			throw new CHttpException(403);
 		}
 	}
+
+	public static function getCustomUserBudget($id)
+	{
+		$query = Yii::app()->db->createCommand()
+				->select('*')
+				->from('diy_budgets')
+				->where('user_id = :userId', array(':userId'=>$id))
+				->queryAll();
+
+		return $query;
+	}
 }

@@ -19,10 +19,11 @@ if($login){ ?>
 	),
 )); ?>
 <div class="login">
-    <div class="login-container"><img alt="Logo login@2x" height="30" src="images/logo-login_2x.png" width="100">
+    <div class="login-container">
+    	<img src="<?php echo Yii::app()->request->baseUrl.'/images/logo.png'; ?>" alt="buDIYet" height="160" width="160">
       <form id="my_form">
         <div class="form-group">
-          <div class="input-group"><span class="input-group-addon"><i class="icon-envelope"></i></span>
+          <div class="input-group"><span class="input-group-addon"><i class="icon-user"></i></span>
             <?php echo $form->textField($model,'username', array('class'=>'form-control','placeholder'=>"Username")); ?>
           </div>
           <?php echo $form->error($model,'username'); ?>
@@ -40,7 +41,7 @@ if($login){ ?>
         </div> -->
         <?php echo CHtml::submitButton('Login', array('class'=>'btn btn-primary login-submit')); ?> 
       </form>
-      <a href="index.html#">Forgot password?</a></div>
+      Don't have an account yet? <a href="<?php echo Yii::app()->createUrl('register'); ?>">Click here</a></div>
   </div>	
 <script>
   $(document).ready(function () {

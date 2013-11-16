@@ -116,7 +116,7 @@ class SiteController extends Controller
 			$model->attributes=$_POST['Users'];
 			// validate user input and redirect to the previous page if valid
 			if($model->validate() && $model->login()){
-				$this->redirect('site/contact');
+				$this->redirect('user/dashboard');
 			} else {
 				$model->password = '';
 			}
@@ -131,6 +131,7 @@ class SiteController extends Controller
 	public function actionLogout()
 	{
 		Yii::app()->user->logout();
-		$this->redirect('login');
+		$homeUrl = Yii::app()->createUrl('/');
+		$this->redirect($homeUrl);
 	}
 }
