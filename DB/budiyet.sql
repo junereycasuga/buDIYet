@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 3.5.8.1deb1
+-- version 3.4.5
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Nov 16, 2013 at 08:58 PM
--- Server version: 5.5.34-0ubuntu0.13.04.1
--- PHP Version: 5.4.9-4ubuntu2.3
+-- Generation Time: Nov 16, 2013 at 06:39 PM
+-- Server version: 5.5.16
+-- PHP Version: 5.3.8
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -28,8 +28,9 @@ SET time_zone = "+00:00";
 
 CREATE TABLE IF NOT EXISTS `comments` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `guest_name` varchar(150) NOT NULL,
-  `guest_comment` text NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `recipient_id` int(11) NOT NULL,
+  `comment` text NOT NULL,
   `comment_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
@@ -117,6 +118,7 @@ CREATE TABLE IF NOT EXISTS `diy_budgets` (
   `date_created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `likes` bigint(20) NOT NULL,
   `dislikes` bigint(20) NOT NULL,
+  `comment` text NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
 
@@ -124,15 +126,15 @@ CREATE TABLE IF NOT EXISTS `diy_budgets` (
 -- Dumping data for table `diy_budgets`
 --
 
-INSERT INTO `diy_budgets` (`id`, `user_id`, `date_created`, `likes`, `dislikes`) VALUES
-(4, 1, '2013-11-16 12:37:32', 0, 0),
-(5, 1, '2013-11-16 12:38:08', 0, 0),
-(6, 1, '2013-11-16 12:39:24', 0, 0),
-(7, 1, '2013-11-16 12:40:04', 0, 0),
-(8, 1, '2013-11-16 12:41:58', 0, 0),
-(9, 1, '2013-11-16 12:48:34', 0, 0),
-(10, 1, '2013-11-16 12:48:56', 0, 0),
-(11, 1, '2013-11-16 12:49:14', 0, 0);
+INSERT INTO `diy_budgets` (`id`, `user_id`, `date_created`, `likes`, `dislikes`, `comment`) VALUES
+(4, 1, '2013-11-16 12:37:32', 0, 0, ''),
+(5, 1, '2013-11-16 12:38:08', 0, 0, ''),
+(6, 1, '2013-11-16 12:39:24', 0, 0, ''),
+(7, 1, '2013-11-16 12:40:04', 0, 0, ''),
+(8, 1, '2013-11-16 12:41:58', 0, 0, ''),
+(9, 1, '2013-11-16 12:48:34', 0, 0, ''),
+(10, 1, '2013-11-16 12:48:56', 0, 0, ''),
+(11, 1, '2013-11-16 12:49:14', 0, 0, '');
 
 -- --------------------------------------------------------
 
@@ -147,7 +149,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `full_name` varchar(250) NOT NULL,
   `email` varchar(250) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Dumping data for table `users`
