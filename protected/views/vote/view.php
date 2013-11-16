@@ -5,8 +5,10 @@
             <div class="heading"><i class="icon-collapse"></i>Budget Comparison </div>
             <div class="widget-content">
             		<center><div id="divForGraph"></div></center>
+            		<?php if($voted){?>
             		<hr>
-            		<center><button class="btn btn-info"><i class="icon-thumbs-up-alt"></i>Vote up</button><button class="btn btn-info"><i class="icon-thumbs-down-alt"></i>Vote down</button></center>
+            		<center><a href="<?php echo $this->createUrl('vote/voteup',array('id'=>$_GET['id']));?>" class="btn btn-info"><i class="icon-thumbs-up-alt"></i>Vote up</a><a href="<?php echo $this->createUrl('vote/votedown',array('id'=>$_GET['id']));?>" class="btn btn-info"><i class="icon-thumbs-down-alt"></i>Vote down</a></center>
+	         		<?php } ?>
 	          </div> 
 	        </div>
 		</div>
@@ -14,7 +16,7 @@
 	<div class="col-lg-6">
 		<div class="col-lg-12">
           <div class="widget-container fluid-height">
-            <div class="heading"><i class="icon-collapse"></i>Programs </div>
+            <div class="heading"><i class="icon-collapse"></i>Programs		<div class="pull-right"> <span class="text-info"><i class="icon-thumbs-up-alt"></i><?php echo number_format($vote['likes']);?>	</span><span class="text-error"><i class="icon-thumbs-down-alt"></i><?php echo number_format($vote['dislikes']);?>	</span></div></div>
             <div class="widget-content">
               <div class="panel-group" id="accordion">
               <?php $i=0;foreach ($model as $key => $value) { ?>

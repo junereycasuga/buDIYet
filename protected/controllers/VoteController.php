@@ -16,8 +16,31 @@ class VoteController extends Controller
     public function actionView($id){
     	$gaa = Curl::getTotal();
     	$model = DiyBreakdown::getDiyDetails($id);
-    	$this->render('view',array('model'=>$model,'total'=>$gaa));
+    	$voteup = DiyBudgets::model()->findByPk($id);
+    	$voted = UserComments::checkUser($id);
+    	$this->render('view',array('model'=>$model,'total'=>$gaa,'vote'=>$voteup,'voted'=>$voted));
     }
+    public function actionVoteup($id){
+    	if(Yii::app()->user->isGuest){
+    		$this->redirect(array('site/login'));
+    	}
+    	if(UserComments::checkUser($id)){
+    		if(UserComments::Voteup($id,Yii::app()->user->id)){
+    		}
+    	}
+    	$this->redirect(array('vote/view/'.$id));
+    }
+    public function actionVotedown($id){
+    	if(Yii::app()->user->isGuest){
+    		$this->redirect('site/login');
+    	}
+    	if(UserComments::checkUser($id)){
+    		if(UserComments::Votedown($id,Yii::app()->user->id)){
+    		}
+    	}
+    	$this->redirect(array('vote/view/'.$id));
+    }
+
 
 	// -----------------------------------------------------------
 	// Uncomment the following methods and override them if needed
