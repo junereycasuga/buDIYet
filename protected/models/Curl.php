@@ -113,4 +113,24 @@ class Curl
 
 		return $response;
 	}
+
+	public static function getTotal(){
+		$url = 'http://api.kabantayngbayan.ph/total/?app_id=527a34f35e13db255feccc5c';
+		$total = curl_init();
+
+		curl_setopt($total, CURLOPT_URL, $url);
+		curl_setopt($total, CURLOPT_RETURNTRANSFER, 1);
+		curl_setopt($total, CURLOPT_TIMEOUT, '3');
+		curl_setopt($total, CURLOPT_CUSTOMREQUEST, 'GET');
+
+		$response = json_decode(curl_exec($total));
+		curl_close($total);
+		$gaa=0;
+		foreach ($response->data as $key => $value) {
+			if($value->year==date('Y')){
+					$gaa = $value->gaa_total;
+			}
+		}
+		return $gaa;
+	}
 }

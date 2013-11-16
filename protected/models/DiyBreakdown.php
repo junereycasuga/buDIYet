@@ -147,6 +147,6 @@ class DiyBreakdown extends CActiveRecord
 				->from('diy_breakdown')
 				->where('diy_id = :diyId', array(':diyId'=>$id));
 
-		Common::pre($query->queryAll());exit;
+		return $query->queryAll();
 	}
 }
