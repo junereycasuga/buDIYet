@@ -1,4 +1,3 @@
-index.php
 /assets/*
 /protected/runtime/*
 /protected/config/main_dev.php
