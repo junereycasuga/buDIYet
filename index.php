@@ -1,6 +1,7 @@
 <?php
 // change the following paths if necessary
-$yii=dirname(__FILE__).'/../framework/yii.php';
+// $yii=dirname(__FILE__).'/../framework/yii.php';
+$yii='./../Yii Core/framework/yii.php';
 
 if(file_exists(dirname(__FILE__).'/protected/config/main_dev.php')){
 	$config=dirname(__FILE__).'/protected/config/main_dev.php';
