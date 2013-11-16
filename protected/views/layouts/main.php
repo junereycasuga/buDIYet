@@ -20,5 +20,6 @@
 		</div>
 	</body>
 	<?php Yii::app()->clientScript->registerScriptFile(Yii::app()->request->baseUrl.'/js/jquery-1.7.2.min.js');?>
+	<?php Yii::app()->clientScript->registerScriptFile(Yii::app()->request->baseUrl.'/js/bootstrap.min.js');?>
 	<?php $this->renderPartial('//layouts/footers/footer'); ?>
 </html>
