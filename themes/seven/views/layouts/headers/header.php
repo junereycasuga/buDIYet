@@ -15,7 +15,9 @@
 					</ul>
 				</li>
 			<?php } else { ?>
-				<li><a href="<?php echo Yii::app()->createUrl('login'); ?>">Login</a></li>
+				<a href="<?php echo Yii::app()->createUrl('login'); ?>" class="btn btn-default-outline" style="margin-top: 5px;">
+					Login / Register
+				</a>
 			<?php } ?>
 			</ul>
 		</div>
