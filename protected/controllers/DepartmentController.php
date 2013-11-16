@@ -14,14 +14,14 @@
 				}else{
 					$auto_appro = NULL;
 				}
-				$save_data = DiyBudgets::saveDIY(1,$new_appro,$auto_appro);
+				$save_data = DiyBudgets::saveDIY(1,$new_appro,$auto_appro,$_POST['comment']);
 				$this->redirect('budget');
 			}
-			$gaa = Curl::dataBudget(null,null,null,null,null);
-			$auto = $gaa->data{0}->auto_appro;
-			$new = $gaa->data{1}->new_appro;
+			$date = date('Y');
+			$gaa = Curl::dataBudget(null,null,null,null,$date);
+			$auto = ($gaa != NULL)? $gaa->data{0}->auto_appro : NULL;
+			$new = ($gaa != NULL)? $gaa->data{1}->new_appro : NULL;
 			$this->render('budget',array(
-					'model' => $gaa->data,
 					'auto_appro' => $auto,
 					'new_appro' => $new,
 				));
