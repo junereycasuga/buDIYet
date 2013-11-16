@@ -19,11 +19,13 @@
 			}
 			$date = date('Y');
 			$gaa = Curl::dataBudget(null,null,null,null,$date);
+			$dateAPI = Curl::dataTotal();
 			$auto = ($gaa != NULL)? $gaa->data{0}->auto_appro : NULL;
 			$new = ($gaa != NULL)? $gaa->data{1}->new_appro : NULL;
 			$this->render('budget',array(
 					'auto_appro' => $auto,
 					'new_appro' => $new,
+					'total' => $dateAPI->data{0}->gaa_total,
 				));
 		}
 	}
