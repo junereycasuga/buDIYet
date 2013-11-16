@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Nov 16, 2013 at 09:52 AM
+-- Generation Time: Nov 16, 2013 at 10:05 AM
 -- Server version: 5.5.16
 -- PHP Version: 5.3.8
 
@@ -55,7 +55,7 @@ CREATE TABLE IF NOT EXISTS `diy_breakdown` (
 
 CREATE TABLE IF NOT EXISTS `diy_budgets` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `username` varchar(150) NOT NULL,
+  `user_id` int(11) NOT NULL,
   `date_created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `likes` bigint(20) NOT NULL,
   `dislikes` bigint(20) NOT NULL,
