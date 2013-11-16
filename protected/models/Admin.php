@@ -19,6 +19,9 @@ class Admin extends CActiveRecord
 	 * @param string $className active record class name.
 	 * @return Admin the static model class
 	 */
+
+	private $_identity;
+
 	public static function model($className=__CLASS__)
 	{
 		return parent::model($className);
@@ -41,7 +44,8 @@ class Admin extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('username, password, email, first_name, last_name', 'required', 'on'=>'register'),
-			array('first_name, last_name', 'required', 'except'=>'login'),
+			array('first_name, last_name, email', 'required', 'except'=>'login'),
+			array('username, password', 'required', 'on'=>'login'),
 			array('email', 'match', 'not'=>true, 'pattern'=>'/[^a-zA-Z0-9\-\_\.\s\@]/', 'message'=>'Invalid email addres'),
 			array('role', 'numerical', 'integerOnly'=>true),
 			array('username, email, first_name, last_name', 'length', 'max'=>150),
@@ -102,6 +106,14 @@ class Admin extends CActiveRecord
 		));
 	}
 
+	public function beforeSave()
+	{
+		$TPassword = new TPassword();
+		$this->password = $TPassword->hash($this->password);
+
+		return true;
+	}
+
 	public function login()
 	{
 		$TPassword = new TPassword();
@@ -113,7 +125,7 @@ class Admin extends CActiveRecord
 			$this->_identity->authenticate();
 		}
 
-		if($this->_identity->errorCOde===UserIdentity::ERROR_NONE){
+		if($this->_identity->errorCode===UserIdentity::ERROR_NONE){
 			Yii::app()->user->login($this->_identity);
 			return true;
 		} else {

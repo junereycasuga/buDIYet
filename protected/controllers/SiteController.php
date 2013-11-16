@@ -85,6 +85,9 @@ class SiteController extends Controller
 			if($model->validate() && $model->save()){
 				Yii::app()->user->setFlash('msg','Registered successfully');
 				Yii::app()->user->setFlash('msgClass', 'alert alert-success');
+			} else {
+				Yii::app()->user->setFlash('msg','Registration unsuccessful');
+				Yii::app()->user->seFlash('msg','alert alert-error');
 			}
 		}
 		$this->render('register', array(
@@ -105,8 +108,9 @@ class SiteController extends Controller
 		{
 			$model->attributes=$_POST['Admin'];
 			// validate user input and redirect to the previous page if valid
-			if($model->validate() && $model->login())
-				$this->redirect(Yii::app()->user->returnUrl);
+			if($model->validate() && $model->login()){
+				$this->redirect('site/contact');
+			}
 		}
 		// display the login form
 		$this->render('login',array('model'=>$model));

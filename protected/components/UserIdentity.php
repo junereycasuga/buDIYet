@@ -40,6 +40,7 @@ class UserIdentity extends CUserIdentity
 
 			return $this->errorCode=self::ERROR_NONE;
 		}
+		exit;
 	}
 
 	public function getId()
