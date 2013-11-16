@@ -38,12 +38,11 @@ class DiyBudgets extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('username, date_created, likes, dislikes', 'required'),
-			array('username', 'length', 'max'=>150),
+			array('user_id, date_created, likes, dislikes', 'required'),
 			array('likes, dislikes', 'length', 'max'=>20),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, username, date_created, likes, dislikes', 'safe', 'on'=>'search'),
+			array('id, user_id, date_created, likes, dislikes', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -65,7 +64,7 @@ class DiyBudgets extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'username' => 'Username',
+			'user_id' => 'User',
 			'date_created' => 'Date Created',
 			'likes' => 'Likes',
 			'dislikes' => 'Dislikes',
@@ -84,7 +83,7 @@ class DiyBudgets extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
-		$criteria->compare('username',$this->username,true);
+		$criteria->compare('user_id',$this->user_id,true);
 		$criteria->compare('date_created',$this->date_created,true);
 		$criteria->compare('likes',$this->likes,true);
 		$criteria->compare('dislikes',$this->dislikes,true);
@@ -94,13 +93,15 @@ class DiyBudgets extends CActiveRecord
 		));
 	}
 
-	public static function saveDIY($userId,$new,$auto){
-
-		$model = self::model();
+	public static function saveDIY($userId,$new=NULL,$auto=NULL){
+		//Common::pre($userId);exit;
+		$model = new DiyBudgets;
 		$model->user_id = $userId;
-		if($model->save()){
-			DiyBreakdown::saveBreakDown($diyId,$new,$auto);
-		}
+		$model->likes = 0;
+		$model->dislikes = 0;
+		$model->save(false);
+		DiyBreakdown::saveBreakDown($model->id,$new,$auto);
+		
 
 
 

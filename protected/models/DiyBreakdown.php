@@ -28,14 +28,14 @@ class DiyBreakdown extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('diy_id, department, owner, project_name, budget_amt', 'required'),
-			array('diy_id', 'numerical', 'integerOnly'=>true),
+			array('diy_id, department, owner, project_name, budget_amt, type', 'required'),
+			array('diy_id, type', 'numerical', 'integerOnly'=>true),
 			array('budget_amt', 'numerical'),
 			array('department', 'length', 'max'=>150),
 			array('owner', 'length', 'max'=>50),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('diy_id, department, owner, project_name, budget_amt', 'safe', 'on'=>'search'),
+			array('diy_id, department, owner, project_name, budget_amt, type', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -61,6 +61,7 @@ class DiyBreakdown extends CActiveRecord
 			'owner' => 'Owner',
 			'project_name' => 'Project Name',
 			'budget_amt' => 'Budget Amt',
+			'type' => 'Type',
 		);
 	}
 
@@ -87,6 +88,7 @@ class DiyBreakdown extends CActiveRecord
 		$criteria->compare('owner',$this->owner,true);
 		$criteria->compare('project_name',$this->project_name,true);
 		$criteria->compare('budget_amt',$this->budget_amt);
+		$criteria->compare('type',$this->type);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -104,7 +106,37 @@ class DiyBreakdown extends CActiveRecord
 		return parent::model($className);
 	}
 
-	public static function saveBreakDown($diyId,$new,$auto){
+	public static function saveBreakDown($diyId,$new=NULL,$auto=NULL){
 		
+		if(isset($new)){
+			for($i=0;$i<sizeOf($new);$i++){
+				$newAppro = explode("|",$new[$i]);
+				$model = new DiyBreakdown;
+
+				$model->diy_id = $diyId;
+				$model->department = $newAppro[0];
+				$model->owner = $newAppro[1];
+				$model->project_name = $newAppro[2];
+				$model->budget_amt = $newAppro[3];
+				$model->type = 1;
+				$model->save(false);
+			}
+		}
+		if(isset($auto)){
+			for($i=0;$i<sizeOf($auto);$i++){
+				$autoAppro = explode("|",$auto[$i]);
+				$model = new DiyBreakdown;
+
+				$model->diy_id = $diyId;
+				$model->department = $autoAppro[0];
+				$model->owner = $autoAppro[1];
+				$model->project_name = $autoAppro[2];
+				$model->budget_amt = $autoAppro[3];
+				$model->type = 2;
+				$model->save(false);
+			}
+		}
+
+		return true;
 	}
 }

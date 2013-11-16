@@ -29,7 +29,7 @@
 										Php <?php echo ($programs->budget->ps+$programs->budget->mooe+$programs->budget->co); ?>
 									</div>
 									<div class="col-md-1">
-										<input type="checkbox" name="data_new_appro[<?php echo $code->owner_code; ?>]" value="<?php echo $code->department_code."|".$code->owner_code."|".$programs->program_desc."|".($programs->budget->ps+$programs->budget->mooe+$programs->budget->co); ?>">
+										<input type="checkbox" name="data_new_appro[]" value="<?php echo $code->department_code."|".$code->owner_code."|".$programs->program_desc."|".($programs->budget->ps+$programs->budget->mooe+$programs->budget->co); ?>">
 									</div>
 								</div>
 							<?php } ?>	
@@ -76,7 +76,7 @@
 										Php <?php echo ($programs->budget->ps+$programs->budget->mooe+$programs->budget->co); ?>
 									</div>
 									<div class="col-md-1">
-										<input type="checkbox" name="data_auto_appro[<?php echo $code->owner_code; ?>]" value="<?php echo $code->department_code."|".$code->owner_code."|".$programs->program_desc."|".($programs->budget->ps+$programs->budget->mooe+$programs->budget->co); ?>">
+										<input type="checkbox" name="data_auto_appro[]" value="<?php echo $code->department_code."|".$code->owner_code."|".$programs->program_desc."|".($programs->budget->ps+$programs->budget->mooe+$programs->budget->co); ?>">
 									</div>
 								</div>
 							<?php } ?>	
