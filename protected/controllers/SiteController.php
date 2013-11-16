@@ -77,7 +77,7 @@ class SiteController extends Controller
 	 */
 	public function actionRegister()
 	{
-		$model=new Admin;
+		$model=new Admin('register');
 
 		if(isset($_POST['Admin']) && isset($_POST['btnRegister'])){
 			$model->attributes = $_POST['Admin'];
@@ -97,7 +97,7 @@ class SiteController extends Controller
 	 */
 	public function actionLogin()
 	{
-		$model=new Admin;
+		$model=new Admin('login');
 
 
 		// collect user input data
