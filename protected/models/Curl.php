@@ -116,12 +116,14 @@ class Curl
 
 	public static function getTotal(){
 		$url = 'http://api.kabantayngbayan.ph/total/?app_id=527a34f35e13db255feccc5c';
+
 		$total = curl_init();
 
 		curl_setopt($total, CURLOPT_URL, $url);
 		curl_setopt($total, CURLOPT_RETURNTRANSFER, 1);
 		curl_setopt($total, CURLOPT_TIMEOUT, '3');
 		curl_setopt($total, CURLOPT_CUSTOMREQUEST, 'GET');
+
 
 		$response = json_decode(curl_exec($total));
 		curl_close($total);
@@ -132,5 +134,25 @@ class Curl
 			}
 		}
 		return $gaa;
+
 	}
+
+	public static function dataTotal(){
+		$year = date('Y');
+		$url = 'http://api.kabantayngbayan.ph/total/?app_id=527a34f35e13db255feccc5c&year='.$year;
+
+		$total = curl_init();
+
+		curl_setopt($total, CURLOPT_URL, $url);
+		curl_setopt($total, CURLOPT_RETURNTRANSFER, 1);
+		curl_setopt($total, CURLOPT_TIMEOUT, '3');
+		curl_setopt($total, CURLOPT_CUSTOMREQUEST, 'GET');
+
+		$response = json_decode(curl_exec($total));
+		curl_close($total);
+
+		return $response;
+
+	}
+
 }
