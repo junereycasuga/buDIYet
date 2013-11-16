@@ -42,7 +42,7 @@ class DiyBudgets extends CActiveRecord
 			array('likes, dislikes', 'length', 'max'=>20),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, user_id, date_created, likes, dislikes, comment', 'safe', 'on'=>'search'),
+			array('id, user_id, date_created, likes, dislikes', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -68,7 +68,6 @@ class DiyBudgets extends CActiveRecord
 			'date_created' => 'Date Created',
 			'likes' => 'Likes',
 			'dislikes' => 'Dislikes',
-			'comment' => 'Comment',
 		);
 	}
 
@@ -88,19 +87,17 @@ class DiyBudgets extends CActiveRecord
 		$criteria->compare('date_created',$this->date_created,true);
 		$criteria->compare('likes',$this->likes,true);
 		$criteria->compare('dislikes',$this->dislikes,true);
-		$criteria->compare('comment',$this->comment,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
 	}
 
-	public static function saveDIY($userId,$new=NULL,$auto=NULL,$comment=NULL){
+	public static function saveDIY($userId,$new=NULL,$auto=NULL){
 		$model = new DiyBudgets;
 		$model->user_id = $userId;
 		$model->likes = 0;
 		$model->dislikes = 0;
-		$model->comment = $comment;
 		$model->save(false);
 		DiyBreakdown::saveBreakDown($model->id,$new,$auto);
 	}
