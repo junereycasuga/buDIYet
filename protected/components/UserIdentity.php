@@ -15,19 +15,35 @@ class UserIdentity extends CUserIdentity
 	 * against some persistent user identity storage (e.g. database).
 	 * @return boolean whether authentication succeeds.
 	 */
+	private $_id;
+
 	public function authenticate()
 	{
-		$users=array(
-			// username => password
-			'demo'=>'demo',
-			'admin'=>'admin',
-		);
-		if(!isset($users[$this->username]))
-			$this->errorCode=self::ERROR_USERNAME_INVALID;
-		elseif($users[$this->username]!==$this->password)
-			$this->errorCode=self::ERROR_PASSWORD_INVALID;
-		else
-			$this->errorCode=self::ERROR_NONE;
-		return !$this->errorCode;
+		if(strpos($this->username, '@') !== false){
+			$userRecord = Admin::model()->findByAttributes(array('email'=>$this->username));
+		} else {
+			$userRecord = Admin::model()->findByAttributes(array('username'=>$this->username));
+		}
+
+		if($userRecord===null){
+			return $this->errorCode=self::ERROR_USERNAME_INVALID;
+		} else if($userRecord->password != $this->password){
+			return $this->errorCode=self::ERROR_PASSWORD_INVALID;
+		} else {
+			# set session
+			$this->_id = $userRecord->id;
+			$this->setState('userId', $userRecord->id);
+			$this->setState('username', $userRecord->username);
+			$this->setState('userEmail', $userRecord->email);
+			$this->setState('userFirstname', $userRecord->first_name);
+			$this->setState('userLastname', $userRecord->last_name);
+
+			return $this->errorCode=self::ERROR_NONE;
+		}
+	}
+
+	public function getId()
+	{
+		return $this->_id;
 	}
 }

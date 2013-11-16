@@ -73,23 +73,37 @@ class SiteController extends Controller
 	}
 
 	/**
+	 * Registration page
+	 */
+	public function actionRegister()
+	{
+		$model=new Admin;
+
+		if(isset($_POST['Admin']) && isset($_POST['btnRegister'])){
+			$model->attributes = $_POST['Admin'];
+
+			if($model->validate() && $model->save()){
+				Yii::app()->user->setFlash('msg','Registered successfully');
+				Yii::app()->user->setFlash('msgClass', 'alert alert-success');
+			}
+		}
+		$this->render('register', array(
+			'model'=>$model,
+		));
+	}
+
+	/**
 	 * Displays the login page
 	 */
 	public function actionLogin()
 	{
-		$model=new LoginForm;
+		$model=new Admin;
 
-		// if it is ajax validation request
-		if(isset($_POST['ajax']) && $_POST['ajax']==='login-form')
-		{
-			echo CActiveForm::validate($model);
-			Yii::app()->end();
-		}
 
 		// collect user input data
-		if(isset($_POST['LoginForm']))
+		if(isset($_POST['Admin']))
 		{
-			$model->attributes=$_POST['LoginForm'];
+			$model->attributes=$_POST['Admin'];
 			// validate user input and redirect to the previous page if valid
 			if($model->validate() && $model->login())
 				$this->redirect(Yii::app()->user->returnUrl);
