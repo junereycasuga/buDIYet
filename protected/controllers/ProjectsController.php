@@ -6,6 +6,5 @@ class ProjectsController extends Controller
 		$getBudget = Curl::dataBudget();
 		//$this->render('index');
 		Common::pre($getBudget);
-		echo "test";
 	}
 }
