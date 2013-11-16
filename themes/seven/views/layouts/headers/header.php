@@ -1,16 +1,18 @@
 <div class="navbar navbar-fixed-top">
 	<div class="container-fluid top-bar">
 		<div class="pull-right">
+			<?php if(!Yii::app()->user->isGuest){ ?>
 			<ul class="nav navbar-nav pull-right">
 				<li class="dropdown user hidden-xs">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 						<img src="#" alt="" height="34" width="34">
-						Test User 
+						<?php echo Yii::app()->user->username ?> 
 						<b class="caret"></b>
 					</a>
 					<ul class="dropdown-menu">
-						<li><a href="#">Test</a></li>
+						<li><a href="<?php echo Yii::app()->createUrl('site/logout'); ?>">Logout</a></li>
 					</ul>
+					<?php } ?>
 				</li>
 			</ul>
 		</div>
