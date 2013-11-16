@@ -4,19 +4,14 @@
 	<div class="panel-group col-md-6" id="accordion1">
 		<?php foreach ($new_appro as $key => $code) { ?>
 			<div class="panel panel-default">
-
 			    <div class="panel-heading">
 			    <a data-toggle="collapse" data-parent="#accordion1" href="#collapse<?php echo $code->owner_code; ?>">
-			      <h4 class="panel-title">
-			        	
-						<b><?php  echo $code->department_desc." (".$code->department_code.")"; ?></b>
-						 - <?php  echo $code->owner_code; ?>
-					
-			      </h4>
-			      </a>
+			    	<h5 class="panel-title">	
+						<b><?php  echo $code->department_desc." (".$code->department_code.")"; ?></b> - <?php  echo $code->owner_code; ?>
+					</h5>
+			    </a>
 			    </div>
-			    
-			<?php if($code->programs) { ?>
+				<?php if($code->programs) { ?>
 				<div id="collapse<?php echo $code->owner_code; ?>" class="panel-collapse collapse">
 	      			<div class="panel-body">
 						<?php foreach ($code->programs as $key => $programs) { ?>
@@ -36,34 +31,24 @@
 						<?php } ?>
 					</div>
 				</div>
-			<?php } ?>
+				<?php } ?>
 			</div>
 		<?php } ?>
 	</div>
-
-	<div class="col-md-4 col-md-offset-6" style="position:fixed !important;">
-	
-	</div>
-
 </div>
 <div class="row">
 	<h3>Auto Appro</h3>	
 	<div class="panel-group col-md-6" id="accordion2">
 		<?php foreach ($auto_appro as $key => $code) { ?>
 			<div class="panel panel-default">
-
-			    <div class="panel-heading">
+				<div class="panel-heading">
 			    <a data-toggle="collapse" data-parent="#accordion2" href="#collapse<?php echo $code->owner_code; ?>">
-			      <h4 class="panel-title">
-			        	
-						<b><?php  echo $code->department_desc." (".$code->department_code.")"; ?></b>
-						 - <?php  echo $code->owner_code; ?>
-					
-			      </h4>
-			      </a>
+			    	<h5 class="panel-title">
+			        	<b><?php  echo $code->department_desc." (".$code->department_code.")"; ?></b> - <?php  echo $code->owner_code; ?>
+					</h5>
+			    </a>
 			    </div>
-			    
-			<?php if($code->programs) { ?>
+			    <?php if($code->programs) { ?>
 				<div id="collapse<?php echo $code->owner_code; ?>" class="panel-collapse collapse">
 	      			<div class="panel-body">
 						<?php foreach ($code->programs as $key => $programs) { ?>
@@ -83,7 +68,7 @@
 						<?php } ?>
 					</div>
 				</div>
-			<?php } ?>
+				<?php } ?>
 			</div>
 		<?php } ?>
 	</div>
@@ -93,5 +78,10 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 		
-	})
+	});
 </script>
+<style>
+.panel-title{
+	font-size:14px !important;
+}
+</style>
