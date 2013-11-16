@@ -14,7 +14,12 @@
 				}else{
 					$auto_appro = NULL;
 				}
-				$save_data = DiyBudgets::saveDIY(1,$new_appro,$auto_appro,$_POST['comment']);
+				if(isset($_POST['comment'])){
+					$comment = $_POST['comment'];
+				}else{
+					$comment = NULL;
+				}
+				$save_data = DiyBudgets::saveDIY(1,$new_appro,$auto_appro,$comment);
 				$this->redirect('budget');
 			}
 			$date = date('Y');
@@ -22,10 +27,11 @@
 			$dateAPI = Curl::dataTotal();
 			$auto = ($gaa != NULL)? $gaa->data{0}->auto_appro : NULL;
 			$new = ($gaa != NULL)? $gaa->data{1}->new_appro : NULL;
+			$total = ($dateAPI != NULL)? $dateAPI->data{0}->gaa_total : NULL;
 			$this->render('budget',array(
 					'auto_appro' => $auto,
 					'new_appro' => $new,
-					'total' => $dateAPI->data{0}->gaa_total,
+					'total' => $total,
 				));
 		}
 	}
