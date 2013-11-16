@@ -6,7 +6,8 @@ $this->pageTitle=Yii::app()->name;
 
 <div class="row-fluid">
 	<div class="row">
-		<div class="col-md-6"><br><br><br><br><br><br><br><br>
+		<div class="col-md-6">
+			<br><br><br><br><br><br><br><br>
 		</div>
 	</div>
 	<div class="row">
