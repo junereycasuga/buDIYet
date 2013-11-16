@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Nov 16, 2013 at 04:28 AM
+-- Generation Time: Nov 16, 2013 at 09:52 AM
 -- Server version: 5.5.16
 -- PHP Version: 5.3.8
 
@@ -23,23 +23,6 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `admin`
---
-
-CREATE TABLE IF NOT EXISTS `admin` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `username` varchar(150) NOT NULL,
-  `password` text NOT NULL,
-  `email` varchar(150) NOT NULL,
-  `first_name` varchar(150) NOT NULL,
-  `last_name` varchar(150) NOT NULL,
-  `role` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `comments`
 --
 
@@ -54,15 +37,30 @@ CREATE TABLE IF NOT EXISTS `comments` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `role_types`
+-- Table structure for table `diy_breakdown`
 --
 
-CREATE TABLE IF NOT EXISTS `role_types` (
-  `id` int(11) NOT NULL,
-  `role_name` varchar(50) NOT NULL,
-  `control` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
+CREATE TABLE IF NOT EXISTS `diy_breakdown` (
+  `diy_id` int(11) NOT NULL,
+  `department` varchar(150) NOT NULL,
+  `project_name` varchar(150) NOT NULL,
+  `budget_amt` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `diy_budgets`
+--
+
+CREATE TABLE IF NOT EXISTS `diy_budgets` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(150) NOT NULL,
+  `date_created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `likes` bigint(20) NOT NULL,
+  `dislikes` bigint(20) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
