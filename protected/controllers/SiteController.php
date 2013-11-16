@@ -78,6 +78,7 @@ class SiteController extends Controller
 	public function actionRegister()
 	{
 		$model=new Users('register');
+		$modelLogin=new Users('login');
 
 		if(isset($_POST['Users']) && isset($_POST['btnRegister'])){
 			$model->attributes = $_POST['Users'];
@@ -85,6 +86,13 @@ class SiteController extends Controller
 			if($model->validate() && $model->save()){
 				Yii::app()->user->setFlash('msg','Registered successfully');
 				Yii::app()->user->setFlash('msgClass', 'alert alert-success');
+
+				$modelLogin->attributes=$_POST['Users'];
+				if($modelLogin->login()){
+					$this->redirect('site/contact');
+				} else {
+					echo 'failed login';
+				}
 			} else {
 				Yii::app()->user->setFlash('msg','Registration unsuccessful');
 				Yii::app()->user->setFlash('msg','alert alert-error');
@@ -109,6 +117,8 @@ class SiteController extends Controller
 			// validate user input and redirect to the previous page if valid
 			if($model->validate() && $model->login()){
 				$this->redirect('site/contact');
+			} else {
+				$model->password = '';
 			}
 		}
 		// display the login form
