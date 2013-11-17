@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Nov 16, 2013 at 06:39 PM
+-- Generation Time: Nov 17, 2013 at 03:31 AM
 -- Server version: 5.5.16
 -- PHP Version: 5.3.8
 
@@ -19,6 +19,19 @@ SET time_zone = "+00:00";
 --
 -- Database: `budiyet`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `budgets_user_comments`
+--
+
+CREATE TABLE IF NOT EXISTS `budgets_user_comments` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) DEFAULT NULL,
+  `diy_budgets_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -120,21 +133,24 @@ CREATE TABLE IF NOT EXISTS `diy_budgets` (
   `dislikes` bigint(20) NOT NULL,
   `comment` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
 
 --
 -- Dumping data for table `diy_budgets`
 --
 
 INSERT INTO `diy_budgets` (`id`, `user_id`, `date_created`, `likes`, `dislikes`, `comment`) VALUES
-(4, 1, '2013-11-16 12:37:32', 0, 0, ''),
+(4, 1, '2013-11-16 12:37:32', 1, 0, 'asdadasda'),
 (5, 1, '2013-11-16 12:38:08', 0, 0, ''),
 (6, 1, '2013-11-16 12:39:24', 0, 0, ''),
 (7, 1, '2013-11-16 12:40:04', 0, 0, ''),
 (8, 1, '2013-11-16 12:41:58', 0, 0, ''),
 (9, 1, '2013-11-16 12:48:34', 0, 0, ''),
 (10, 1, '2013-11-16 12:48:56', 0, 0, ''),
-(11, 1, '2013-11-16 12:49:14', 0, 0, '');
+(11, 1, '2013-11-16 12:49:14', 0, 0, ''),
+(12, 1, '2013-11-16 12:49:14', 0, 0, '\r\n'),
+(13, 1, '2013-11-16 12:49:14', 0, 0, '\r\n'),
+(14, 1, '2013-11-16 12:49:14', 0, 0, '\r\n');
 
 -- --------------------------------------------------------
 
@@ -149,7 +165,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `full_name` varchar(250) NOT NULL,
   `email` varchar(250) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
 -- Dumping data for table `users`
@@ -157,7 +173,8 @@ CREATE TABLE IF NOT EXISTS `users` (
 
 INSERT INTO `users` (`id`, `username`, `password`, `full_name`, `email`) VALUES
 (1, 'junereycasuga', '0655a949c0826968e2daa324026f7b2dcccd94ac882ba5a4d5cec0fbc1fc0ff545a1a3b77560b7ead1704ca9f41b73a91c7d238f946f723e66fa96a17f1c3558', 'Junerey Casuga', 'junerey.casuga@gmail.com'),
-(4, 'test', 'ee26b0dd4af7e749aa1a8ee3c10ae9923f618980772e473f8819a5d4940e0db27ac185f8a0e1d5f84f88bc887fd67b143732c304cc5fa9ad8e6f57f50028a8ff', 'Test User', 'test@email.com');
+(4, 'test', 'ee26b0dd4af7e749aa1a8ee3c10ae9923f618980772e473f8819a5d4940e0db27ac185f8a0e1d5f84f88bc887fd67b143732c304cc5fa9ad8e6f57f50028a8ff', 'Test User', 'test@email.com'),
+(5, 'edbertguinto', 'd15cee60acff60e14d0176de1583f7e8d2ca6443d099c1493d43d5565ba903e2db85afb73a7d7071837835d4073019bd9d8b0570a5041c7332cf108722286045', 'Edbert Guinto', 'ecg_24k@yahoo.com');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

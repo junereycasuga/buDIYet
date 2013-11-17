@@ -19,7 +19,7 @@
 		<div class="widget-container scrollable list rating-widget">
 			<div class="heading">My National Budgets
 				<span class="pull-right">
-					<a href="<?php echo $this->createAbsoluteUrl('/department/budget'); ?>" class="btn btn-danger">Create Budget</a>
+					<a href="<?php echo $this->createAbsoluteUrl('/department/budget'); ?>" class="btn btn-xs btn-primary">Create your Own National Budget</a>
 				</span>
 			</div>
 			<div class="widget-content scrollbar">
