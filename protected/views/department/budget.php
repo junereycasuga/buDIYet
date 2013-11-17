@@ -3,7 +3,7 @@
 		<div class="col-md-6">
             <center>
             	<h1>National Budget</h1>
-				<h1 class="natl">Php <?php echo $total; ?> - 100%</h1>
+				<h1 class="natl">Php <?php echo number_format($total); ?> - 100%</h1>
 			</center>
 			<br/>
 		</div>
