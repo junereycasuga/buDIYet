@@ -1,9 +1,9 @@
-<?php if($new_appro && $auto_appro && $total!=0){ ?>
+<?php if($new_appro || $auto_appro || $total){ ?>
 	<div class="row">
 		<div class="col-md-6">
             <center>
             	<h1>National Budget</h1>
-				<h1 class="natl">Php <?php echo number_format($total); ?> - 100%</h1>
+				<h1 class="natl">Php <?php echo $total; ?> - 100%</h1>
 			</center>
 			<br/>
 		</div>
@@ -126,8 +126,8 @@
 	$(document).ready(function(){
 		$totalBudget = 0;
 		$('.task-input').click(function(){
-			
-			$ntlBudget = <?php echo $total; ?>;
+			<?php $totalTrm = str_replace(",", "", $total); ?>
+			$ntlBudget = parseInt(<?php echo $totalTrm; ?>);
 			$selected = parseInt($(this).attr('data-id'));
 			if($(this).is(':checked')){
 				$totalBudget = $totalBudget+$selected;	

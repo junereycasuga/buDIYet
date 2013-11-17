@@ -24,39 +24,20 @@
 			}
 			$date = date('Y');
 			$gaa = Curl::dataBudget(null,null,null,null,$date);
-			//Common::pre($gaa);exit;
-			$dateAPI = Curl::dataTotal();
+			$dataAPI = Curl::dataTotal();
+
+			foreach($dataAPI->data as $data){
+				$gaa_total = $data->gaa_total;
+				$new_appro = $data->new_appro_total;
+			}
+			$total_budget = $gaa_total + $new_appro;
 			$auto = ($gaa != NULL)? $gaa->data{0}->auto_appro : NULL;
 			$new = ($gaa != NULL)? $gaa->data{1}->new_appro : NULL;
-			$subtotal_new = 0;
-			$subtotal_auto = 0;
-			//Common::pre($auto);exit;
-			if($new){
-				foreach ($new as $key => $code) {
-					if($code->programs){
-						foreach ($code->programs as $key => $programs) {
-							$subtotal_new = $subtotal_new+($programs->budget->ps+$programs->budget->mooe+$programs->budget->co);
-						}
-					}
-				}
-			}
-			if($auto){
-				foreach ($auto as $key => $code) {
-					if($code->programs){
-						foreach ($code->programs as $key => $programs) {
-							$subtotal_auto = $subtotal_auto+($programs->budget->ps+$programs->budget->mooe+$programs->budget->co);
-						}
-					}
-				}	
-			}
-			
-
-			$total = $subtotal_new+$subtotal_auto;
-			
+			$total = ($dateAPI != NULL)? $dateAPI->data{0}->gaa_total : NULL;
 			$this->render('budget',array(
 					'auto_appro' => $auto,
 					'new_appro' => $new,
-					'total' => $total,
+					'total' => $total_budget,	
 				));
 		}
 	}

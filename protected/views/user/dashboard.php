@@ -17,31 +17,40 @@
 	</div>
 	<div class="col-md-8">
 		<div class="widget-container scrollable list rating-widget">
-			<div class="heading">My National Budgets</div>
+			<div class="heading">My National Budgets
+				<span class="pull-right">
+					<a href="<?php echo $this->createAbsoluteUrl('/department/budget'); ?>" class="btn btn-xs btn-primary">Create your Own National Budget</a>
+				</span>
+			</div>
 			<div class="widget-content scrollbar">
-				<ul>
-					<?php foreach($myBudget['data'] as $budget){ ?>
-					<li>
-						<div class="reviewer-info">
-							<div class="pull-right">
-								<span>
-									<i class="icon-thumbs-up"></i>
-									<span class="label label-info"><?php echo $budget['likes']; ?></span>
-								</span>&nbsp;&nbsp;&nbsp;
-								<span>
-									<i class="icon-thumbs-down"></i>
-									<span class="label label-danger"><?php echo $budget['dislikes']; ?></span>
-								</span>
-							</div>
-							<a href="<?php echo $this->createUrl('vote/view', array('id'=>$budget['id'])); ?>"><?php echo $budget['full_name']; ?></a>
-							<em> on <?php echo date('M d, Y', strtotime($budget['date_created'])); ?></em>
-							<div class="review-text">
-								<blockquote><?php echo $budget['comment']; ?></blockquote>
-							</div>
-						</div>	
-					</li>
-					<?php } ?>
-				</ul>
+				<?php if($myBudget['data']){ ?>
+					<ul>
+						<?php foreach($myBudget['data'] as $budget){ ?>
+							<li>
+								<div class="reviewer-info">
+									<div class="pull-right">
+										<span>
+											<i class="icon-thumbs-up"></i>
+											<span class="label label-info"><?php echo $budget['likes']; ?></span>
+										</span>&nbsp;&nbsp;&nbsp;
+										<span>
+											<i class="icon-thumbs-down"></i>
+											<span class="label label-danger"><?php echo $budget['dislikes']; ?></span>
+										</span>
+									</div>
+									<a href="<?php echo $this->createUrl('vote/view', array('id'=>$budget['id'])); ?>"><?php echo $budget['full_name']; ?></a>
+									<em> on <?php echo date('M d, Y', strtotime($budget['date_created'])); ?></em>
+									<div class="review-text">
+										<blockquote><?php echo $budget['comment']; ?></blockquote>
+									</div>
+								</div>	
+							</li>
+							<?php } ?>
+						</ul>
+					<?php } else{ 
+						echo "<br>";
+						Common::displayError('No Budget Yet.');
+					 } ?>
 			</div>
 		</div>
 	</div>
