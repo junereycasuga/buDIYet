@@ -1,9 +1,9 @@
-<?php if($new_appro || $auto_appro || $total){ ?>
+<?php if($new_appro && $auto_appro && $total!=0){ ?>
 	<div class="row">
 		<div class="col-md-6">
             <center>
             	<h1>National Budget</h1>
-				<h1 class="natl">Php <?php echo $total; ?> - 100%</h1>
+				<h1 class="natl">Php <?php echo number_format($total); ?> - 100%</h1>
 			</center>
 			<br/>
 		</div>
@@ -65,7 +65,7 @@
 		</div>
 		<div class="col-md-6">
 			<div class="widget-container fluid-height">
-				<div class="heading"><i class="icon-collapse"></i>New General Appropriations</div>
+				<div class="heading"><i class="icon-collapse"></i>Automatic Appropriations</div>
 			</div>	
 			<div class="white panel-group" id="accordion2">
 				<?php foreach ($auto_appro as $key => $code) { ?>
@@ -126,8 +126,8 @@
 	$(document).ready(function(){
 		$totalBudget = 0;
 		$('.task-input').click(function(){
-			<?php $totalTrm = str_replace(",", "", $total); ?>
-			$ntlBudget = parseInt(<?php echo $totalTrm; ?>);
+			
+			$ntlBudget = <?php echo $total; ?>;
 			$selected = parseInt($(this).attr('data-id'));
 			if($(this).is(':checked')){
 				$totalBudget = $totalBudget+$selected;	
