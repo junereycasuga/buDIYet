@@ -25,6 +25,16 @@ class UserController extends Controller
 					return true;
 				}
 			),
+			array(
+				'allow',
+				'actions'=>array('profile'),
+				'expression'=>function(){
+					if(Yii::app()->user->isGuest){
+						return true;
+					}
+					return trye;
+				}
+			),
 
 			array('deny'),
 		);
@@ -38,6 +48,19 @@ class UserController extends Controller
         	'pages'=>$myBudget['pages'],
         	)
         );
+    }
+
+    public function actionProfile($id)
+    {
+    	$userDetail = Users::model()->findByPk($id);
+    	$userBudget = DiyBudgets::listAllUserBudget($id);
+
+    	$this->render('profile', array(
+    		'user'=>$userDetail,
+    		'budget'=>$userBudget,
+    		'pages'=>$userBudget['pages'],
+			)
+    	);
     }
 
     public function actionSettings()
