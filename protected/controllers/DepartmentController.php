@@ -19,7 +19,7 @@
 				}else{
 					$comment = NULL;
 				}
-				$save_data = DiyBudgets::saveDIY(1,$new_appro,$auto_appro,$comment);
+				$save_data = DiyBudgets::saveDIY(Yii::app()->user->id,$new_appro,$auto_appro,$comment);
 				$this->redirect('budget');
 			}
 			$date = date('Y');
