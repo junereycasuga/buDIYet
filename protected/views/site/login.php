@@ -20,7 +20,7 @@ if($login){ ?>
 )); ?>
 <div class="login">
     <div class="login-container">
-    	<img src="<?php echo Yii::app()->request->baseUrl.'/images/logo.png'; ?>" alt="buDIYet" height="160" width="160">
+    	<img src="<?php echo Yii::app()->request->baseUrl.'/images/b2.png'; ?>" alt="buDIYet"  width="360" style="margin-left:-5px">
       <form id="my_form">
         <div class="form-group">
           <div class="input-group"><span class="input-group-addon"><i class="icon-user"></i></span>
