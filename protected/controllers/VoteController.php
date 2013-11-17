@@ -15,10 +15,9 @@ class VoteController extends Controller
     }
 
     public function actionView($id){
+    	$gaa = Curl::getTotal();
     	$model = DiyBreakdown::getDiyDetails($id);
-    	foreach($model as $data){
-    		Common::pre($data);
-    	}
+    	$this->render('view',array('model'=>$model,'total'=>$gaa));
     }
 
 	// -----------------------------------------------------------
