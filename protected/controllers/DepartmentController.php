@@ -30,7 +30,7 @@
 			$new = ($gaa != NULL)? $gaa->data{1}->new_appro : NULL;
 			$subtotal_new = 0;
 			$subtotal_auto = 0;
-			Common::pre($auto);exit;
+			//Common::pre($auto);exit;
 			if($new){
 				foreach ($new as $key => $code) {
 					if($code->programs){
