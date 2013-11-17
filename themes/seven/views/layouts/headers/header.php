@@ -26,7 +26,7 @@
 			<span class="icon-bar"></span>
 			<span class="icon-bar"></span>
 		</button>
-		<a href="<?php echo Yii::app()->createUrl('site/index'); ?>" class="logo">buDIYet</a>
+		<a href="<?php echo Yii::app()->createUrl('site/index'); ?>" class="logo"><h2 class="header">buDIYet</h2></a>
 	</div>
 	<div class="container-fluid main-nav cleafix">
 		<div class="nav-collapse">

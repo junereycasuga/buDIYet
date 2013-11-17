@@ -5,7 +5,7 @@ class Curl
 	public static function dataBudget($type=NULL,$dept_code=NULL,$owner_code=NULL,$agency_type=NULL,$year=NULL){
 
 		$url = 'http://api.kabantayngbayan.ph/budget/?app_id=527a34f35e13db255feccc5c';
-		$limit = 10;
+		$limit = 1000;
 		$skip = 0;
 		$params = array();
 		if($type){
