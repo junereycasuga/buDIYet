@@ -4,14 +4,14 @@ class Common {
 
 	public static function displayError($message){
 		if(is_array($message)){
-			$error = "<div class='alert alert-error'><ul>";
+			$error = "<div class='alert alert-danger'><ul>";
 			foreach ($message as $value) {
 				$error .= "<li>".$value."</li>";
 			}
 			$error .= "</ul></div>";
 			echo $error;
 		}else{
-			echo "<div class='alert alert-error'>".$message."</div>";
+			echo "<div class='alert alert-danger'>".$message."</div>";
 		}
 	}
 
