@@ -30,6 +30,8 @@ class VoteController extends Controller
     	}
     	if(UserComments::checkUser($id)){
     		if(UserComments::Voteup($id,Yii::app()->user->id)){
+				Yii::app()->user->setFlash('msg','Vote successfully');
+                Yii::app()->user->setFlash('msgClass','alert alert-success');
     		}
     	}
     	$this->redirect(array('vote/view/'.$id));
@@ -40,6 +42,8 @@ class VoteController extends Controller
     	}
     	if(UserComments::checkUser($id)){
     		if(UserComments::Votedown($id,Yii::app()->user->id)){
+				Yii::app()->user->setFlash('msg','Vote successfully');
+                Yii::app()->user->setFlash('msgClass','alert alert-success');
     		}
     	}
     	$this->redirect(array('vote/view/'.$id));

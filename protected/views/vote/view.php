@@ -8,7 +8,7 @@
             		<?php if($voted){?>
             		<hr>
             		<center><a href="<?php echo $this->createUrl('vote/voteup',array('id'=>$_GET['id']));?>" class="btn btn-info"><i class="icon-thumbs-up-alt"></i>Vote up</a><a href="<?php echo $this->createUrl('vote/votedown',array('id'=>$_GET['id']));?>" class="btn btn-info"><i class="icon-thumbs-down-alt"></i>Vote down</a></center>
-	         		<?php } ?>
+	         		<?php }else{echo '<br>';} ?>
 	          </div> 
 	        </div>
 		</div>

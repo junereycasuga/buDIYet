@@ -34,6 +34,13 @@
 	<body>
 		<?php $this->renderPartial('//layouts/headers/header'); ?>
 		<div class="container">
+		<!-- Flash Notification Messages -->
+		<?php if(Yii::app()->user->hasFlash('msg')): ?>
+			<div class="<?php echo Yii::app()->user->getFlash('msgClass'); ?>">
+				<button type="button" class="close" data-dismiss="alert">&times;</button>
+				<?php echo '<i class="icon-info-sign"> </i>'.Yii::app()->user->getFlash('msg') ?>
+			</div>
+		<?php endif; ?>
 			<?php echo $content; ?>
 		</div>
 			<!-- <div class="row footer">
