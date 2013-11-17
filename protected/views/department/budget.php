@@ -65,7 +65,7 @@
 		</div>
 		<div class="col-md-6">
 			<div class="widget-container fluid-height">
-				<div class="heading"><i class="icon-collapse"></i>New General Appropriations</div>
+				<div class="heading"><i class="icon-collapse"></i>Automatic Appropriations</div>
 			</div>	
 			<div class="white panel-group" id="accordion2">
 				<?php foreach ($auto_appro as $key => $code) { ?>
