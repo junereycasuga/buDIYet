@@ -7,6 +7,8 @@ if(file_exists(dirname(__FILE__).'/../Yii Core/framework/yii.php')){
 }
 if(file_exists(dirname(__FILE__).'/protected/config/main_dev.php')){
 	$config=dirname(__FILE__).'/protected/config/main_dev.php';
+} else if(file_exists(dirname(__FILE__).'/protected/config/main_production.php')){
+    $config=dirname(__FILE__).'/protected/config/main_production.php';
 } else {
 	$config=dirname(__FILE__).'/protected/config/main.php';
 }
