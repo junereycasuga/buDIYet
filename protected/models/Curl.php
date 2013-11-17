@@ -125,6 +125,9 @@ class Curl
 
 		$response = json_decode(curl_exec($total));
 		curl_close($total);
+		if(!$response){
+				throw new CHttpException("Error on fetching the details.please reload the page", 404);
+		}
 		$gaa=0;
 		foreach ($response->data as $key => $value) {
 			if($value->year==date('Y')){
