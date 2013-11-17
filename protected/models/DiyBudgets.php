@@ -94,6 +94,18 @@ class DiyBudgets extends CActiveRecord
 		));
 	}
 
+	public static function saveDIY($userId,$new,$auto){
+
+		$model = self::model();
+		$model->user_id = $userId;
+		if($model->save()){
+			DiyBreakdown::saveBreakDown($diyId,$new,$auto);
+		}
+
+
+
+	}
+
 	public function upVote($id)
 	{
 		$model = self::model()->findByPk($id);

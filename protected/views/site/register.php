@@ -32,7 +32,7 @@
 			</div>
 
 			<div class="form-group">
-				<?php echo CHtml::submitButton('Reigster',array('name'=>'btnRegister', 'class'=>'btn btn-primary')); ?>
+				<?php echo CHtml::submitButton('Register',array('name'=>'btnRegister', 'class'=>'btn btn-primary')); ?>
 			</div>
 		</div>
 	</div>
