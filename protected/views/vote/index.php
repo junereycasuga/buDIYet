@@ -22,12 +22,12 @@
 	<?php } ?>
 	<?php if($pages!=" "){ ?>
 		<div class="widget-content padded text-center">
-          	<ul class="pagination pagination-lg" style="margin-top:-20px;padding-bottom:20px">
 	            <?php $this->widget('CLinkPager', array(
 	                    'pages'         =>  $pages,
 	                    'header'        =>  '',
 	                    'nextPageLabel' =>  Yii::t('yii','Next →'),
 	                    'prevPageLabel' =>  Yii::t('yii','← Prev'),
+	                    'htmlOptions'=>array('class'=>'pagination'),
 	                )) ?>
 	        </div>
 	    <?php } ?>

@@ -1,3 +1,13 @@
+<?php 
+$register = true;
+if($register){ ?>
+<style type="text/css">
+  .navbar {
+    display:none;
+  }
+</style>
+
+  <?php } ?>
 <div class="form">
 	<div class="login">
 		<div class="login-container">
