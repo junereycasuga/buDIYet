@@ -4,7 +4,9 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<meta name="language" content="en" />
-
+		<meta property="og:image" content="<?php echo Yii::app()->request->baseUrl.'/images/dbm.png'; ?>"/>
+		<meta property="og:title" content="buDIYet">
+    	<meta property="og:description" content="Vote for budgets">
 		<!-- blueprint CSS framework -->
 		<link href="http://fonts.googleapis.com/css?family=Lato:100,300,400,700" media="all" rel="stylesheet">
 		<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->theme->baseUrl; ?>/library/stylesheets/bootstrap.min.css" />

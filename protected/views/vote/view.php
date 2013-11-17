@@ -9,6 +9,17 @@
             		<hr>
             		<center><a href="<?php echo $this->createUrl('vote/voteup',array('id'=>$_GET['id']));?>" class="btn btn-info"><i class="icon-thumbs-up-alt"></i>Vote up</a><a href="<?php echo $this->createUrl('vote/votedown',array('id'=>$_GET['id']));?>" class="btn btn-info"><i class="icon-thumbs-down-alt"></i>Vote down</a></center>
 	         		<?php }else{echo '<br>';} ?>
+	         		<!-- AddThis Button BEGIN -->
+					<br><div class="addthis_toolbox addthis_default_style addthis_32x32_style">
+					<a class="addthis_button_preferred_1" addthis:url="<?php echo "http://watchout.com/vote".$_GET['id'];?>" addthis:description="Android Of The Philppines Mabuhay! Special Edition Industry "></a>
+					<a class="addthis_button_preferred_2"></a>
+					<a class="addthis_button_preferred_3"></a>
+					<a class="addthis_button_preferred_4"></a>
+					<a class="addthis_button_compact"></a>
+					<a class="addthis_counter addthis_bubble_style"></a>
+					</div>
+					<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=xa-52882ad963199de8"></script>
+					<!-- AddThis Button END -->
 	          </div> 
 	        </div>
 		</div>
