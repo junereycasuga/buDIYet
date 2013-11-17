@@ -14,11 +14,15 @@ class VoteController extends Controller
     }
 
     public function actionView($id){
+    	$total = 0;
     	$gaa = Curl::getTotal();
-    	$model = DiyBreakdown::getDiyDetails($id);
+    	$model = DiyBreakdown::getDiyDetails($id);	
+    	foreach ($model as $key => $value) {
+    		$total += $value['budget_amt'];
+    	}
     	$voteup = DiyBudgets::model()->findByPk($id);
     	$voted = UserComments::checkUser($id);
-    	$this->render('view',array('model'=>$model,'total'=>$gaa,'vote'=>$voteup,'voted'=>$voted));
+    	$this->render('view',array('model'=>$model,'total'=>$gaa,'vote'=>$voteup,'voted'=>$voted,'customTotal'=>$total));
     }
     public function actionVoteup($id){
     	if(Yii::app()->user->isGuest){

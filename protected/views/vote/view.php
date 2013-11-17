@@ -27,7 +27,7 @@
                     <div class="panel-collapse collapse" id="collapse<?php echo $i;?>" style="height: 0px;">
 	                    <div class="panel-body">
 	                      <h2> <?php echo $value['department'];?> </h2>
-	                      <small class="mini muted">Department</small><br>
+	                      <small class="mini muted"><?php echo $value['owner'];?></small><br>
 							<h3>Budget Amount : <?php echo $value['budget_amt'];?> <a href="#" data-amount="<?php echo $value['budget_amt'];?>" class="view pull-right">View</a></h3>
 	                 	</div>
                 	</div>
@@ -43,7 +43,7 @@
 		$(document).ready(function(){
 			arrayOfData = new Array(
 			  	 [<?php echo str_replace( ',', '', $total);?>,'National Budget','#222222'],
-			  	 [15.2,'Custom Budget','#007AFF']
+			  	 [<?php echo $customTotal; ?>,'Custom Budget','#007AFF']
 			);
 			$('#divForGraph').jqBarGraph({ data: arrayOfData });
 			$('.view').click(function(){
