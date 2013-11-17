@@ -5,12 +5,13 @@
 				<div class="widget-container fluid-height clearfix">
         			<div class="widget-content padded">
 		              	<div class="reviewer-info">
-	                		<a href="<?php echo $this->createUrl('vote/'.$value['id']); ?>"><?php echo $value['full_name']; ?></a><em> on <?php echo date('M d, Y',strtotime($value['date_created'])); ?></em>
+	                		<a href="<?php echo $this->createUrl('vote/'.$value['id']); ?>"><?php echo $value['full_name']; ?></a>
+	                		<em> on <?php echo date('M d, Y',strtotime($value['date_created'])); ?></em>
 	              			<div class="review-text">
 	                			<blockquote><?php echo $value['comment']; ?></blockquote>
 	                		</div>
 	                		<div class="pull-right">
-	                			<span><i class="icon-thumbs-up"></i><span class="label label-primary"><?php echo $value['likes']; ?></span></span>&nbsp;&nbsp;&nbsp;
+	                			<span><i class="icon-thumbs-up"></i><span class="label label-info"><?php echo $value['likes']; ?></span></span>&nbsp;&nbsp;&nbsp;
 	                			<span><i class="icon-thumbs-down"></i><span class="label label-danger"><?php echo $value['dislikes']; ?></span></span>
 	                		</div>
 	                	</div><br>
