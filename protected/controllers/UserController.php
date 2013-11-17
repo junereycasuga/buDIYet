@@ -32,7 +32,7 @@ class UserController extends Controller
 					if(Yii::app()->user->isGuest){
 						return true;
 					}
-					return trye;
+					return true;
 				}
 			),
 
