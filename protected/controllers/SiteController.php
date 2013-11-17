@@ -89,7 +89,7 @@ class SiteController extends Controller
 
 				$modelLogin->attributes=$_POST['Users'];
 				if($modelLogin->login()){
-					$this->redirect('site/contact');
+					$this->redirect('user/dashboard');
 				} else {
 					echo 'failed login';
 				}

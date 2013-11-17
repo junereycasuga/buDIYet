@@ -1,4 +1,4 @@
-<?php if($new_appro || $auto_appro || $total){ ?>
+<?php if($new_appro && $auto_appro && $total){ ?>
 	<div class="row">
 		<div class="col-md-6">
             <center>
