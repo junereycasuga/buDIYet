@@ -131,9 +131,10 @@ class Curl
 				throw new CHttpException("Error on fetching the details.please reload the page", 404);
 		}
 		$gaa=0;
+		// Common::pre($response,true);
 		foreach ($response->data as $key => $value) {
 			if($value->year==date('Y')){
-					$gaa = $value->gaa_total;
+					$gaa = (intval(str_replace( ',', '',$value->gaa_total))+intval(str_replace( ',', '', $value->new_appro_total)));
 			}
 		}
 		return $gaa;
