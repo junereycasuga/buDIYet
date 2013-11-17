@@ -33,7 +33,7 @@
 			$total_budget = $gaa_total + $new_appro;
 			$auto = ($gaa != NULL)? $gaa->data{0}->auto_appro : NULL;
 			$new = ($gaa != NULL)? $gaa->data{1}->new_appro : NULL;
-			$total = ($dateAPI != NULL)? $dateAPI->data{0}->gaa_total : NULL;
+			$total = ($dataAPI != NULL)? $dataAPI->data{0}->gaa_total : NULL;
 			$this->render('budget',array(
 					'auto_appro' => $auto,
 					'new_appro' => $new,
