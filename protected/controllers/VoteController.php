@@ -7,11 +7,10 @@ class VoteController extends Controller
 {
     public function actionIndex()
     {
-    	$model = DiyBudgets::model()->findAll();
-    	foreach($model as $data){
-    		Common::pre($data->attributes);
-    	}
-    	$this->render('index');   
+    	$model = DiyBudgets::listAll();
+    	//Common::pre($model);true;
+
+    	$this->render('index',array('model'=>$model,'pages'=>$model['pages']));   
     }
 
     public function actionView($id){
