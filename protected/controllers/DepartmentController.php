@@ -27,8 +27,8 @@
 			$dataAPI = Curl::dataTotal();
 
 			foreach($dataAPI->data as $data){
-				$gaa_total = $data->gaa_total;
-				$new_appro = $data->new_appro_total;
+				$gaa_total = str_replace(",","",$data->gaa_total);
+				$new_appro = str_replace(",","",$data->new_appro_total);
 			}
 			$total_budget = $gaa_total + $new_appro;
 			$auto = ($gaa != NULL)? $gaa->data{0}->auto_appro : NULL;
