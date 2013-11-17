@@ -1,19 +1,18 @@
-<?php if($new_appro && $auto_appro && $total!=0){ ?>
+<?php if($new_appro || $auto_appro){ ?>
 	<div class="row">
 		<div class="col-md-6">
             <center>
             	<h1>National Budget</h1>
-				<h1 class="natl">Php <?php echo number_format($total); ?> - 100%</h1>
+				<h1 class="natl">Php <?php echo $total; ?></h1>
 			</center>
-			<br/>
 		</div>
 		<div class="col-md-6">
-		<center>
+			<center>
         	<h1>DIY Budget</h1>
-			<h1 class="diy">Php 0 - 0%</h1>
-			<br/>
+			<h1 class="diy">Php 0</h1>
 		</center>
 		</div>
+		
 	</div>
 	<br/>
 	<form name="frm" method="POST">
@@ -65,7 +64,7 @@
 		</div>
 		<div class="col-md-6">
 			<div class="widget-container fluid-height">
-				<div class="heading"><i class="icon-collapse"></i>Automatic Appropriations</div>
+				<div class="heading"><i class="icon-collapse"></i>New General Appropriations</div>
 			</div>	
 			<div class="white panel-group" id="accordion2">
 				<?php foreach ($auto_appro as $key => $code) { ?>
@@ -108,7 +107,7 @@
 	</div>
 	<div class="row">
 		<div class="form-group">
-		<textarea class="col-md-8 form-control" name="comment" placeholder="Enter Your Comment Here"></textarea>
+		<textarea class="col-md-8 form-control" placeholder="Enter Your Comment Here"></textarea>
 		</div>
 	</div>
 	<center>
@@ -126,18 +125,15 @@
 	$(document).ready(function(){
 		$totalBudget = 0;
 		$('.task-input').click(function(){
-			
-			$ntlBudget = <?php echo $total; ?>;
-			$selected = parseInt($(this).attr('data-id'));
+			$ntlBudget = parseInt($('.natl').text());
 			if($(this).is(':checked')){
-				$totalBudget = $totalBudget+$selected;	
+				$totalBudget = $totalBudget+parseInt($(this).attr('data-id'));	
 			}else{
-				$totalBudget = $totalBudget-$selected;	
+				$totalBudget = $totalBudget-parseInt($(this).attr('data-id'));	
 			}
-			$getOf100 = $totalBudget/$ntlBudget;
-			$percentage = $getOf100*100;
-			$roundedPct = Math.round($percentage * 100) / 100;
-			$('.diy').text("Php "+$totalBudget.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")+" - "+$roundedPct+"%");
+			$percentage = ($totalBudget/$ntlBudget)*100;
+			alert($percentage);
+			$('.diy_pct').html($percentage+"%<canvas width='50' height='50'></canvas>");
 		});
 	});
 </script>
