@@ -6,6 +6,8 @@
 		<meta name="language" content="en" />
 
 		<!-- blueprint CSS framework -->
+		<link href="http://fonts.googleapis.com/css?family=Lato:100,300,400,700" media="all" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->theme->baseUrl; ?>/library/stylesheets/bootstrap.min.css" />
 		<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->theme->baseUrl; ?>/library/stylesheets/application.css" />
 		<!-- <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->theme->baseUrl; ?>/library/stylesheets/excanvas.min.css"/> -->
 		<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->theme->baseUrl; ?>/library/stylesheets/classyscroll.css"/>
@@ -23,7 +25,7 @@
 		<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->theme->baseUrl; ?>/library/stylesheets/prettify.css"/>
 		<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->theme->baseUrl; ?>/library/stylesheets/select2.css"/>
 		<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->theme->baseUrl; ?>/library/stylesheets/style.css"/>
-		
+		<style type="text/css">.fancybox-margin{margin-right:17px;}</style>
 
 		<title><?php echo CHtml::encode($this->pageTitle); ?></title>
 	</head>

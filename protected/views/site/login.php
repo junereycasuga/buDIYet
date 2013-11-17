@@ -21,33 +21,32 @@ $this->breadcrumbs=array(
 		'validateOnSubmit'=>true,
 	),
 )); ?>
-	
-	<div class="row">
-		<div class="well col-md-5 col-sm-10">
-			<p class="note">Fields with <span class="required">*</span> are required.</p>
+<div class="login">
+<div class="login">
+    <div class="login-container"><img alt="Logo login@2x" height="30" src="images/logo-login_2x.png" width="100">
+      <form>
+        <div class="form-group">
+          <div class="input-group"><span class="input-group-addon"><i class="icon-envelope"></i></span>
+            <?php echo $form->textField($model,'username', array('class'=>'form-control','placeholder'=>"Username")); ?>
+          </div>
+          <?php echo $form->error($model,'username'); ?>
+        </div>
+        <div class="form-group">
+          <div class="input-group"><span class="input-group-addon"><i class="icon-lock"></i></span>
+            <?php echo $form->passwordField($model,'password', array('class'=>'form-control','placeholder'=>"Password")); ?>
+          </div>
+          <?php echo $form->error($model,'password'); ?>
+        </div>
+<!--         <div class="form-group">
+          <label class="checkbox">
+            <input type="checkbox">
+            Remember me</label>
+        </div> -->
+        <?php echo CHtml::submitButton('Login', array('class'=>'btn btn-primary login-submit')); ?> 
+      </form>
+      <a href="index.html#">Forgot password?</a></div>
+  </div>	
 
-			<div class="form-group">
-				<?php echo $form->labelEx($model,'username'); ?>
-				<?php echo $form->textField($model,'username', array('class'=>'form-control')); ?>
-				<?php echo $form->error($model,'username'); ?>
-			</div>
-
-			<div class="form-group">
-				<?php echo $form->labelEx($model,'password'); ?>
-				<?php echo $form->passwordField($model,'password', array('class'=>'form-control')); ?>
-				<?php echo $form->error($model,'password'); ?>
-				<p class="hint">
-					Hint: You may login with <kbd>demo</kbd>/<kbd>demo</kbd> or <kbd>admin</kbd>/<kbd>admin</kbd>.
-				</p>
-			</div>
-
-			<!--  -->
-
-			<div class="form-group buttons">
-				<?php echo CHtml::submitButton('Login', array('class'=>'btn btn-primary')); ?>
-			</div>
-		</div>
-	</div>
 
 <?php $this->endWidget(); ?>
 </div><!-- form -->
